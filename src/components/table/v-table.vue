@@ -36,6 +36,18 @@ export default {
     methods: {
         pageClick(page) {
             this.pageNumber = page
+        },
+        sortByName() {
+            this.users_data.sort((a, b) => a.name.localeCompare(b.name))
+        },
+        sortByPointsEarned() {
+            this.users_data.sort((a, b) => a.points_earned - b.points_earned)
+        },
+        sortByPointsSpend() {
+            this.users_data.sort((a, b) => a.points_spent - b.points_spent)
+        },
+        sortByDate() {
+            this.users_data.sort((a, b) => a.registration_date.localeCompare(b.registration_date))
         }
     }
 }
@@ -44,10 +56,10 @@ export default {
 <template>
     <div class="v-table">
         <div class="v-table__header">
-            <p>Name</p>
-            <p>Points earned</p>
-            <p>Points spent</p>
-            <p>Registration date</p>
+            <p @click="sortByName">Name<i class="material-icons">unfold_more</i></p>
+            <p @click="sortByPointsEarned">Points earned<i class="material-icons">unfold_more</i></p>
+            <p @click="sortByPointsSpend">Points spent<i class="material-icons">unfold_more</i></p>
+            <p @click="sortByDate">Registration date<i class="material-icons">unfold_more</i></p>
 
         </div>
         <div class="v-table__body">
@@ -81,7 +93,12 @@ export default {
     justify-content: space-around;
     border-bottom: solid 1px #e7e7e7;
 }
+.v-table__header:hover{
+    cursor: pointer;
+}
 .v-table__header p {
+    display: flex;
+    align-items: center;
     flex-basis: 25%;
     text-align: left;
 }

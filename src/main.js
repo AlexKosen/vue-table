@@ -2,6 +2,7 @@ import { createApp } from 'vue'
 import App from './App.vue'
 import router from './router'
 import { store } from './vuex/store'
+import 'material-design-icons-iconfont'
 
 const app = createApp(App)
 
